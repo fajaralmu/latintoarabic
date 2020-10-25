@@ -26,6 +26,7 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/html.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/dialogs.js"></script>
     <script type="text/javascript"></script>
     <style>
@@ -66,7 +67,33 @@
     </nav>
     <div class="container">
         <div class="views" id="app-view" style="display: block;">
-            <h3>App</h3>
+           
+            <div class="row">
+                <div class="col-12">
+                    <h3>App</h3>
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">Type Latin Character</div>
+                        <div class="card-body">
+                            <input autocomplete="off"  type="text" id="input-latin" class="form-control" placeholder="input latin" />
+                        </div>
+                        <div class="card-footer">
+                            <button id="btn-submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">Output</div>
+                        <div class="card-body">
+                            <input autocomplete="off" type="text" id="result-output" class="form-control" placeholder="no result" />
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+            </div>
+           
         </div>
         <div class="views" id="guide-view" style="display: none; text-align: center;">
             <h3>Guide</h3>
@@ -83,6 +110,9 @@
     const guideView = byId("guide-view");
     const views = document.getElementsByClassName("views");
     const navItems = document.getElementsByClassName("nav-item");
+    const inputLatin = byId("input-latin");
+    const resultOutput = byId("result-output");
+    const buttonSubmit = byId("btn-submit");
  
     function showView(id, element){
         hideViews();
@@ -104,5 +134,35 @@
             element.style.display = 'none';
         }
     }
+
+    function initEvents(){
+        inputLatin.onkeyup = function(e){
+            if(e.keyCode == 13){
+                showResult(e.target.value);
+            }
+        }
+        buttonSubmit.onclick = function(e){
+            showResult(inputLatin.value);
+        }
+    }
+
+    function showResult(val){
+        startLoading();
+        processInput(val).then(function(result){
+            resultOutput.value = result;
+        }).finally(function(){stopLoading()});
+       
+    }
+
+
+    function startLoading(){
+
+    }
+
+    function stopLoading(){
+
+    }
+
+    initEvents();
 </script>
 </html>
