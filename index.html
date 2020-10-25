@@ -70,7 +70,7 @@
            
             <div class="row">
                 <div class="col-12">
-                    <h3>App</h3>
+                    <h3 align="center">Latin to Arabic</h3>
                 </div>
                 <div class="col-6">
                     <div class="card">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-6">
                     <div class="card">
-                        <div class="card-header">Output</div>
+                        <div class="card-header">Output&nbsp;<i id="loader"></i></div>
                         <div class="card-body">
                             <input autocomplete="off" type="text" id="result-output" class="form-control" placeholder="no result" />
                         </div>
@@ -102,6 +102,7 @@
     </div>
     <div class="footer">
         <p>fajaralmu 2020</p>
+        <p><a href="https://github.com/fajaralmu/latintoarabic">Source</a></p>
     </div>
   </body>
 
@@ -156,11 +157,11 @@
 
 
     function startLoading(){
-
+        byId("loader").innerHTML = "loading...";
     }
 
     function stopLoading(){
-
+        byId("loader").innerHTML = "";
     }
 
     initEvents();
