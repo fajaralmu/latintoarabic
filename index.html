@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Kafila Media PSB Frame" />
+    <meta property="og:title" content="Kafila Media PSB Frame" />
+    <meta
+      property="og:url"
+      content="https:/fajaralmu.github.io/latintoarabic/"
+    />
+    <meta property="og:description" content="fajaralmu" />
+    <meta property="og:site_name" content="fajaralmu" />
+    <!-- <meta
+      property="og:image"
+      itemprop="image"
+      content="http:/kafila.sch.id/assets/img/kiis-stroke.png"
+    /> -->
+    <meta property="og:type" content="website" />
+
+    <title>Latin To Arabic</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/cropper.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/html.js"></script>
+    <script src="js/dialogs.js"></script>
+    <script type="text/javascript"></script>
+    <style>
+        .container{
+            border: solid 1px #cccccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Latin to Arabic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" onclick="showView('app-view', this)">App</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="showView('guide-view', this)">Guide</a>
+          </li>
+          
+          </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+      </div>
+    </nav>
+    <div class="container">
+        <div class="views" id="app-view" style="display: block;">
+            <h3>App</h3>
+        </div>
+        <div class="views" id="guide-view" style="display: none; text-align: center;">
+            <h3>Guide</h3>
+            <img class="img-thumbnail" src="assets/guide.png" />
+        </div>
+    </div>
+    <div class="footer">
+        <p>fajaralmu 2020</p>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const appView = byId("app-view");
+    const guideView = byId("guide-view");
+    const views = document.getElementsByClassName("views");
+    const navItems = document.getElementsByClassName("nav-item");
+ 
+    function showView(id, element){
+        hideViews();
+        inactiveNavItems();
+        byId(id).style.display = 'block';
+        element.parentElement.className = "nav-item active";
+    }
+
+    function inactiveNavItems(){
+        for (let i = 0; i < navItems.length; i++) {
+            const element = navItems[i];
+            element.className = "nav-item";
+        }
+    }
+
+    function hideViews(){
+        for (let i = 0; i < views.length; i++) {
+            const element = views[i];
+            element.style.display = 'none';
+        }
+    }
+</script>
+</html>
