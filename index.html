@@ -88,10 +88,12 @@
                     <div class="card">
                         <div class="card-header">Output&nbsp;<i id="loader"></i></div>
                         <div class="card-body">
-                            <h3 id="result-output" style="font-family: 'Times New Roman', Times, serif;">No Result</h3>
+                            <input id="result-output" class="form-control" style="font-family: 'Times New Roman', Times, serif;"/>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-info" href="https://github.com/fajaralmu/latintoarabic">Source Code</a>
+                            <button class="btn btn-secondary" onclick="copyResult()">Copy</button>
+                            <a class="btn btn-info" target="_blank" href="https://github.com/fajaralmu/latintoarabic">Source Code</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -125,6 +127,19 @@
         element.parentElement.className = "nav-item active";
     }
 
+    function copyResult(){
+
+        /* Select the text field */
+        resultOutput.select();
+        resultOutput.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + resultOutput.value);
+    }
+
     function inactiveNavItems(){
         for (let i = 0; i < navItems.length; i++) {
             const element = navItems[i];
@@ -151,9 +166,10 @@
     }
 
     function showResult(val){
+        val = val.toLowerCase();
         startLoading();
         processInput(val).then(function(result){
-            resultOutput.innerHTML = result;
+            resultOutput.value = result;
         }).finally(function(){stopLoading()});
        
     }
